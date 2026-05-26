@@ -1,23 +1,19 @@
-// Напиши функцию calculateOrderTotal(productPrice, deliveryPrice, hasPromoCode), которая возвращает итоговую сумму.
+// Реальная задача 2: бесплатная доставка
 //
-//     Правила:
+// Напиши функцию getDeliveryMessage(orderTotal, freeDeliveryFrom), которая возвращает сообщение:
 //
-// базовая сумма = цена товара + доставка;
-// если hasPromoCode === true, применяется скидка 10% на товар;
-// скидка применяется только к товару, не к доставке.
+//     если orderTotal >= freeDeliveryFrom, вернуть "Доставка бесплатная";
+// иначе вернуть "До бесплатной доставки не хватает X", где X — разница между freeDeliveryFrom и orderTotal.
 //     Примеры:
 //
-// calculateOrderTotal(1000, 300, true);  // 1200
-// calculateOrderTotal(1000, 300, false); // 1300
-// calculateOrderTotal(500, 100, true);   // 550
+// getDeliveryMessage(2000, 2000); // "Доставка бесплатная"
+// getDeliveryMessage(1500, 2000); // "До бесплатной доставки не хватает 500"
+// getDeliveryMessage(700, 1000);  // "До бесплатной доставки не хватает 300"
 
-function calculateOrderTotal(productPrice, deliveryPrice, hasPromoCode) {
-    const product = Number(productPrice);
-    const delivery = Number(deliveryPrice);
-
-    if (hasPromoCode) {
-        const discount = product * 0.1;
-        return product - discount + delivery;
+function getDeliveryMessage(orderTotal, freeDeliveryFrom) {
+    if (orderTotal >= freeDeliveryFrom) {
+        return 'Доставка бесплатная';
     }
-    return product + delivery;
+    const missingAmount = freeDeliveryFrom - orderTotal;
+    return `До бесплатной доставки не хватает ${missingAmount}`;
 }
