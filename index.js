@@ -1,19 +1,23 @@
-// Реальная задача 2: бесплатная доставка
+// Реальная задача 3: сообщение о скидке
 //
-// Напиши функцию getDeliveryMessage(orderTotal, freeDeliveryFrom), которая возвращает сообщение:
+// В интернет-магазине нужно показать пользователю, какая скидка у него будет.
 //
-//     если orderTotal >= freeDeliveryFrom, вернуть "Доставка бесплатная";
-// иначе вернуть "До бесплатной доставки не хватает X", где X — разница между freeDeliveryFrom и orderTotal.
-//     Примеры:
+//     Напиши функцию getDiscountMessage(totalPrice, isMember), которая возвращает строку:
 //
-// getDeliveryMessage(2000, 2000); // "Доставка бесплатная"
-// getDeliveryMessage(1500, 2000); // "До бесплатной доставки не хватает 500"
-// getDeliveryMessage(700, 1000);  // "До бесплатной доставки не хватает 300"
+//     если totalPrice >= 3000 и isMember === true, вернуть "Ваша скидка 20%"
+// если totalPrice >= 3000 и isMember === false, вернуть "Ваша скидка 10%"
+// если totalPrice < 3000 и isMember === true, вернуть "Ваша скидка 5%"
+// если totalPrice < 3000 и isMember === false, вернуть "Скидка не доступна"
+// Примеры:
+//
+//     getDiscountMessage(3500, true);  // "Ваша скидка 20%"
+// getDiscountMessage(3500, false); // "Ваша скидка 10%"
+// getDiscountMessage(1000, true);  // "Ваша скидка 5%"
+// getDiscountMessage(1000, false); // "Скидка не доступна"
 
-function getDeliveryMessage(orderTotal, freeDeliveryFrom) {
-    if (orderTotal >= freeDeliveryFrom) {
-        return 'Доставка бесплатная';
+function getDiscountMessage(totalPrice, isMember) {
+    if (totalPrice >= 3000) {
+        return isMember ? "Ваша скидка 20%" : "Ваша скидка 10%";
     }
-    const missingAmount = freeDeliveryFrom - orderTotal;
-    return `До бесплатной доставки не хватает ${missingAmount}`;
+    return isMember ? "Ваша скидка 5%" : "Скидка не доступна";
 }
