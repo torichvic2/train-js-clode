@@ -1,23 +1,30 @@
-// Реальная задача 3: сообщение о скидке
+// Реальная задача 4: проверка формы регистрации
 //
-// В интернет-магазине нужно показать пользователю, какая скидка у него будет.
+// Напиши функцию getRegistrationMessage(username, password), которая проверяет данные и возвращает сообщение:
 //
-//     Напиши функцию getDiscountMessage(totalPrice, isMember), которая возвращает строку:
-//
-//     если totalPrice >= 3000 и isMember === true, вернуть "Ваша скидка 20%"
-// если totalPrice >= 3000 и isMember === false, вернуть "Ваша скидка 10%"
-// если totalPrice < 3000 и isMember === true, вернуть "Ваша скидка 5%"
-// если totalPrice < 3000 и isMember === false, вернуть "Скидка не доступна"
+//     если username пустая строка "", вернуть "Введите имя пользователя"
+// если password пустая строка "", вернуть "Введите пароль"
+// если длина пароля меньше 8, вернуть "Пароль слишком короткий"
+// иначе вернуть "Регистрация успешна"
 // Примеры:
 //
-//     getDiscountMessage(3500, true);  // "Ваша скидка 20%"
-// getDiscountMessage(3500, false); // "Ваша скидка 10%"
-// getDiscountMessage(1000, true);  // "Ваша скидка 5%"
-// getDiscountMessage(1000, false); // "Скидка не доступна"
+//     getRegistrationMessage("", "12345678");      // "Введите имя пользователя"
+// getRegistrationMessage("anna", "");          // "Введите пароль"
+// getRegistrationMessage("anna", "123");       // "Пароль слишком короткий"
+// getRegistrationMessage("anna", "12345678");  // "Регистрация успешна"
 
-function getDiscountMessage(totalPrice, isMember) {
-    if (totalPrice >= 3000) {
-        return isMember ? "Ваша скидка 20%" : "Ваша скидка 10%";
+function getRegistrationMessage(username, password) {
+    if (!username) {
+        return "Введите имя пользователя";
     }
-    return isMember ? "Ваша скидка 5%" : "Скидка не доступна";
+
+    if (!password) {
+        return "Введите пароль";
+    }
+
+    if (password.length < 8) {
+        return "Пароль слишком короткий";
+    }
+
+    return "Регистрация успешна";
 }
