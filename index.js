@@ -1,24 +1,11 @@
-// Реальная задача 9: расчет бонусных баллов
+// Реальная задача 10: цена с налогом
 //
-// Напиши функцию calculateBonusPoints(orderTotal, isVip), которая возвращает количество бонусных баллов.
-//
-//     Правила:
-//
-// обычный пользователь получает 1 балл за каждые 100 рублей заказа;
-// VIP-пользователь получает 2 балла за каждые 100 рублей заказа;
-// если сумма заказа меньше 100, вернуть 0.
+// Напиши функцию calculatePriceWithTax(price, taxPercent), которая возвращает цену с налогом.
+
 // Примеры:
-//
-//     calculateBonusPoints(500, false); // 5
-// calculateBonusPoints(500, true);  // 10
-// calculateBonusPoints(90, true);   // 0
-// calculateBonusPoints(120, false); // 1.2
-// Можно возвращать дробное число, округлять не нужно.
+// calculatePriceWithTax(1000);     // 1200
+// calculatePriceWithTax(500, 0);   // 500
 
-function calculateBonusPoints(orderTotal, isVip) {
-    if (orderTotal < 100) {
-        return 0;
-    }
-
-    return isVip ? orderTotal / 100 * 2 : orderTotal / 100;
+function calculatePriceWithTax(price, taxPercent = 20) {
+    return price + price * taxPercent / 100;
 }
