@@ -1,19 +1,24 @@
-// Реальная задача 8: приветствие пользователя
+// Реальная задача 9: расчет бонусных баллов
 //
-// Напиши функцию getUserGreeting(name, isLoggedIn), которая возвращает сообщение:
+// Напиши функцию calculateBonusPoints(orderTotal, isVip), которая возвращает количество бонусных баллов.
 //
-//     если isLoggedIn === false, вернуть "Пожалуйста, войдите в аккаунт"
-// если isLoggedIn === true и name не пустая строка, вернуть "Здравствуйте, NAME"
-// если isLoggedIn === true, но name пустая строка, вернуть "Здравствуйте, пользователь"
+//     Правила:
+//
+// обычный пользователь получает 1 балл за каждые 100 рублей заказа;
+// VIP-пользователь получает 2 балла за каждые 100 рублей заказа;
+// если сумма заказа меньше 100, вернуть 0.
 // Примеры:
 //
-//     getUserGreeting("Анна", true);  // "Здравствуйте, Анна"
-// getUserGreeting("", true);      // "Здравствуйте, пользователь"
-// getUserGreeting("Анна", false); // "Пожалуйста, войдите в аккаунт"
+//     calculateBonusPoints(500, false); // 5
+// calculateBonusPoints(500, true);  // 10
+// calculateBonusPoints(90, true);   // 0
+// calculateBonusPoints(120, false); // 1.2
+// Можно возвращать дробное число, округлять не нужно.
 
-function getUserGreeting(name, isLoggedIn) {
-    if (!isLoggedIn) {
-        return "Пожалуйста, войдите в аккаунт";
+function calculateBonusPoints(orderTotal, isVip) {
+    if (orderTotal < 100) {
+        return 0;
     }
-    return name ? `Здравствуйте, ${name}` : "Здравствуйте, пользователь";
+
+    return isVip ? orderTotal / 100 * 2 : orderTotal / 100;
 }
