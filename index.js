@@ -1,29 +1,19 @@
-// Реальная задача 7: способ оплаты
+// Реальная задача 8: приветствие пользователя
 //
-// Напиши функцию getPaymentFee(paymentMethod, amount), которая возвращает комиссию за оплату.
+// Напиши функцию getUserGreeting(name, isLoggedIn), которая возвращает сообщение:
 //
-//     Правила:
-//
-// если paymentMethod равно "card", комиссия 2% от amount
-// если paymentMethod равно "paypal", комиссия 3% от amount
-// если paymentMethod равно "bank", комиссия 0
-// для любого другого способа оплаты вернуть null
+//     если isLoggedIn === false, вернуть "Пожалуйста, войдите в аккаунт"
+// если isLoggedIn === true и name не пустая строка, вернуть "Здравствуйте, NAME"
+// если isLoggedIn === true, но name пустая строка, вернуть "Здравствуйте, пользователь"
 // Примеры:
 //
-//     getPaymentFee("card", 1000);   // 20
-// getPaymentFee("paypal", 1000); // 30
-// getPaymentFee("bank", 1000);   // 0
-// getPaymentFee("cash", 1000);   // null
+//     getUserGreeting("Анна", true);  // "Здравствуйте, Анна"
+// getUserGreeting("", true);      // "Здравствуйте, пользователь"
+// getUserGreeting("Анна", false); // "Пожалуйста, войдите в аккаунт"
 
-function getPaymentFee(paymentMethod, amount) {
-    if (paymentMethod === "card") {
-        return amount * 0.02;
+function getUserGreeting(name, isLoggedIn) {
+    if (!isLoggedIn) {
+        return "Пожалуйста, войдите в аккаунт";
     }
-    if (paymentMethod === "paypal") {
-        return amount * 0.03;
-    }
-    if (paymentMethod === "bank") {
-        return 0;
-    }
-    return null;
+    return name ? `Здравствуйте, ${name}` : "Здравствуйте, пользователь";
 }
