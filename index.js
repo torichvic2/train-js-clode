@@ -1,26 +1,31 @@
-// Реальная задача 5: проверка скидочного промокода
+// Реальная задача 6: статус заказа
 //
-// Напиши функцию checkPromoCode(code, orderTotal), которая возвращает сообщение:
+// Напиши функцию getOrderStatusMessage(status), которая возвращает сообщение по статусу заказа:
 //
-//     если code пустая строка "", вернуть "Введите промокод"
-// если code равно "SALE10" и orderTotal >= 1000, вернуть "Промокод применен"
-// если code равно "SALE10" и orderTotal < 1000, вернуть "Минимальная сумма заказа 1000"
-// иначе вернуть "Промокод недействителен"
+//     если status равно "new", вернуть "Заказ создан"
+// если status равно "paid", вернуть "Заказ оплачен"
+// если status равно "shipped", вернуть "Заказ отправлен"
+// если status равно "cancelled", вернуть "Заказ отменен"
+// иначе вернуть "Неизвестный статус"
 // Примеры:
 //
-//     checkPromoCode("", 1500);        // "Введите промокод"
-// checkPromoCode("SALE10", 1500);  // "Промокод применен"
-// checkPromoCode("SALE10", 700);   // "Минимальная сумма заказа 1000"
-// checkPromoCode("HELLO", 1500);   // "Промокод недействителен"
+//     getOrderStatusMessage("new");       // "Заказ создан"
+// getOrderStatusMessage("paid");      // "Заказ оплачен"
+// getOrderStatusMessage("shipped");   // "Заказ отправлен"
+// getOrderStatusMessage("cancelled"); // "Заказ отменен"
+// getOrderStatusMessage("test");      // "Неизвестный статус"
 
-function checkPromoCode(promoCode, orderTotal) {
-    if (!promoCode) {
-        return "Введите промокод";
+function getOrderStatusMessage(status) {
+    switch (status) {
+        case "new":
+            return "Заказ создан";
+        case "paid":
+            return "Заказ оплачен";
+        case "shipped":
+            return "Заказ отправлен";
+        case "cancelled":
+            return "Заказ отменен";
+        default:
+            return "Неизвестный статус";
     }
-
-    if (promoCode === "SALE10") {
-        return orderTotal >= 1000 ? "Промокод применен" : "Минимальная сумма заказа 1000";
-    }
-
-    return "Промокод недействителен";
 }
