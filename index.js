@@ -1,31 +1,29 @@
-// Реальная задача 6: статус заказа
+// Реальная задача 7: способ оплаты
 //
-// Напиши функцию getOrderStatusMessage(status), которая возвращает сообщение по статусу заказа:
+// Напиши функцию getPaymentFee(paymentMethod, amount), которая возвращает комиссию за оплату.
 //
-//     если status равно "new", вернуть "Заказ создан"
-// если status равно "paid", вернуть "Заказ оплачен"
-// если status равно "shipped", вернуть "Заказ отправлен"
-// если status равно "cancelled", вернуть "Заказ отменен"
-// иначе вернуть "Неизвестный статус"
+//     Правила:
+//
+// если paymentMethod равно "card", комиссия 2% от amount
+// если paymentMethod равно "paypal", комиссия 3% от amount
+// если paymentMethod равно "bank", комиссия 0
+// для любого другого способа оплаты вернуть null
 // Примеры:
 //
-//     getOrderStatusMessage("new");       // "Заказ создан"
-// getOrderStatusMessage("paid");      // "Заказ оплачен"
-// getOrderStatusMessage("shipped");   // "Заказ отправлен"
-// getOrderStatusMessage("cancelled"); // "Заказ отменен"
-// getOrderStatusMessage("test");      // "Неизвестный статус"
+//     getPaymentFee("card", 1000);   // 20
+// getPaymentFee("paypal", 1000); // 30
+// getPaymentFee("bank", 1000);   // 0
+// getPaymentFee("cash", 1000);   // null
 
-function getOrderStatusMessage(status) {
-    switch (status) {
-        case "new":
-            return "Заказ создан";
-        case "paid":
-            return "Заказ оплачен";
-        case "shipped":
-            return "Заказ отправлен";
-        case "cancelled":
-            return "Заказ отменен";
-        default:
-            return "Неизвестный статус";
+function getPaymentFee(paymentMethod, amount) {
+    if (paymentMethod === "card") {
+        return amount * 0.02;
     }
+    if (paymentMethod === "paypal") {
+        return amount * 0.03;
+    }
+    if (paymentMethod === "bank") {
+        return 0;
+    }
+    return null;
 }
