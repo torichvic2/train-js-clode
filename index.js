@@ -1,29 +1,27 @@
-// Контрольная задача перед массивами
+// Функция removeElement
+// Напишите функцию removeElement, которая принимает массив и элемент, а затем возвращает новый массив без указанного элемента. Для перебора элементов используйте цикл for.
 //
-// Напиши функцию getCheckoutMessage(productPrice, deliveryPrice, isPaid, taxPercent), которая возвращает сообщение для оформления заказа.
+// Входные данные:
 //
-//     Правила:
+//     array: Массив, из которого нужно удалить элемент. Массив может содержать любые типы данных.
+//     element: Элемент, который нужно удалить из массива.
+//     Выходные данные:
 //
-// если isPaid === false, вернуть "Заказ ожидает оплаты"
-// если заказ оплачен:
-//     посчитать итоговую сумму: товар с налогом + доставка;
-// если taxPercent не передали, использовать налог 20;
-// вернуть строку "Заказ оплачен. Итого: X"
-// Примеры:
-//
-//     getCheckoutMessage(1000, 300, false, 10); // "Заказ ожидает оплаты"
-// getCheckoutMessage(1000, 300, true, 10);  // "Заказ оплачен. Итого: 1400"
-// getCheckoutMessage(1000, 300, true);      // "Заказ оплачен. Итого: 1500"
+//     Новый массив, который не содержит указанный элемент.
+const array = ['a', 'b', 'c', 1, 2, 3];
 
-function getCheckoutMessage(productPrice, deliveryPrice, isPaid, taxPercent = 20) {
-    if (!isPaid) {
-        return "Заказ ожидает оплаты";
-    }
+function removeElement(array, element) {
 
-    const orderTotalPrice = productPrice + deliveryPrice + calculateTaxAmount(productPrice, taxPercent);
-    return `Заказ оплачен. Итого: ${orderTotalPrice}`;
+    let newArr = [];
+
+    for(let i = 0; i < array.length; i++) {
+        let elem = array[i];
+        if(element !== elem) {
+        newArr.push(elem);
+        }
+}
+    return newArr;
 }
 
-function calculateTaxAmount(productPrice, taxPercent) {
-    return productPrice * taxPercent / 100;
-}
+let result = removeElement(array, 'a');
+console.log(result);
